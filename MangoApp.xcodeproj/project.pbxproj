@@ -13,6 +13,13 @@
 		673687932A56FCB900D880DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 673687912A56FCB900D880DA /* Main.storyboard */; };
 		673687952A56FCBA00D880DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 673687942A56FCBA00D880DA /* Assets.xcassets */; };
 		673687982A56FCBA00D880DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 673687962A56FCBA00D880DA /* LaunchScreen.storyboard */; };
+		673687A42A56FEAF00D880DA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687A32A56FEAF00D880DA /* NetworkService.swift */; };
+		673687A72A56FEED00D880DA /* APIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687A62A56FEED00D880DA /* APIPath.swift */; };
+		673687A92A56FEF800D880DA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687A82A56FEF800D880DA /* NetworkError.swift */; };
+		673687AC2A57063400D880DA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687AB2A57063400D880DA /* Dictionary.swift */; };
+		673687AE2A57074000D880DA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687AD2A57074000D880DA /* UserModel.swift */; };
+		673687B12A570C0100D880DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687B02A570C0100D880DA /* Constants.swift */; };
+		673687B42A57139A00D880DA /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687B32A57139A00D880DA /* UserPreference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		673687942A56FCBA00D880DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		673687972A56FCBA00D880DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		673687992A56FCBA00D880DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		673687A32A56FEAF00D880DA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		673687A62A56FEED00D880DA /* APIPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
+		673687A82A56FEF800D880DA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		673687AB2A57063400D880DA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		673687AD2A57074000D880DA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		673687B02A570C0100D880DA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		673687B32A57139A00D880DA /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +70,86 @@
 		6736878A2A56FCB900D880DA /* MangoApp */ = {
 			isa = PBXGroup;
 			children = (
+				673687B22A57138300D880DA /* Preference */,
+				673687AF2A570BEE00D880DA /* Constants */,
+				673687AA2A5705F800D880DA /* Extension */,
+				673687A52A56FED200D880DA /* Enum */,
+				673687A22A56FE9B00D880DA /* Service */,
+				673687A12A56FE9500D880DA /* ViewModel */,
+				673687A02A56FE9000D880DA /* Model */,
+				6736879F2A56FE8700D880DA /* ViewController */,
 				6736878B2A56FCB900D880DA /* AppDelegate.swift */,
 				6736878D2A56FCB900D880DA /* SceneDelegate.swift */,
-				6736878F2A56FCB900D880DA /* ViewController.swift */,
 				673687912A56FCB900D880DA /* Main.storyboard */,
 				673687942A56FCBA00D880DA /* Assets.xcassets */,
 				673687962A56FCBA00D880DA /* LaunchScreen.storyboard */,
 				673687992A56FCBA00D880DA /* Info.plist */,
 			);
 			path = MangoApp;
+			sourceTree = "<group>";
+		};
+		6736879F2A56FE8700D880DA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6736878F2A56FCB900D880DA /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		673687A02A56FE9000D880DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				673687AD2A57074000D880DA /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		673687A12A56FE9500D880DA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		673687A22A56FE9B00D880DA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				673687A32A56FEAF00D880DA /* NetworkService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		673687A52A56FED200D880DA /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				673687A62A56FEED00D880DA /* APIPath.swift */,
+				673687A82A56FEF800D880DA /* NetworkError.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		673687AA2A5705F800D880DA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				673687AB2A57063400D880DA /* Dictionary.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		673687AF2A570BEE00D880DA /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				673687B02A570C0100D880DA /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		673687B22A57138300D880DA /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				673687B32A57139A00D880DA /* UserPreference.swift */,
+			);
+			path = Preference;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +224,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				673687902A56FCB900D880DA /* ViewController.swift in Sources */,
+				673687A72A56FEED00D880DA /* APIPath.swift in Sources */,
+				673687AE2A57074000D880DA /* UserModel.swift in Sources */,
+				673687B42A57139A00D880DA /* UserPreference.swift in Sources */,
 				6736878C2A56FCB900D880DA /* AppDelegate.swift in Sources */,
+				673687A92A56FEF800D880DA /* NetworkError.swift in Sources */,
+				673687AC2A57063400D880DA /* Dictionary.swift in Sources */,
+				673687A42A56FEAF00D880DA /* NetworkService.swift in Sources */,
 				6736878E2A56FCB900D880DA /* SceneDelegate.swift in Sources */,
+				673687B12A570C0100D880DA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
