@@ -33,7 +33,7 @@ enum APIPath {
     func getCommonHeader() -> [String: String] {
         var header = ["Content-Type": "application/json"]
         if let id = UserPreferences.shared.getUserID() {
-            header[FelixSessionId] = id
+            header[Constants.Cookie] = "\(Constants.FelixSessionId)=\(id)"
         }
         return header
     }
