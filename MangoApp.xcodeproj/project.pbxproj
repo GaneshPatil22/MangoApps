@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671347DD2A5885B400D8B2FA /* ParentFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671347DC2A5885B400D8B2FA /* ParentFolderModel.swift */; };
 		6736878C2A56FCB900D880DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736878B2A56FCB900D880DA /* AppDelegate.swift */; };
 		6736878E2A56FCB900D880DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736878D2A56FCB900D880DA /* SceneDelegate.swift */; };
 		673687952A56FCBA00D880DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 673687942A56FCBA00D880DA /* Assets.xcassets */; };
@@ -22,9 +23,14 @@
 		673687B82A572F3900D880DA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687B72A572F3900D880DA /* Color.swift */; };
 		673687BA2A573C2200D880DA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687B92A573C2200D880DA /* LoginViewModel.swift */; };
 		673687BC2A5740A800D880DA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687BB2A5740A800D880DA /* UIViewController.swift */; };
+		673687BE2A57D9FE00D880DA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687BD2A57D9FE00D880DA /* UITextField.swift */; };
+		673687C12A58017500D880DA /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687BF2A58017500D880DA /* DashboardViewController.swift */; };
+		673687C22A58017500D880DA /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673687C02A58017500D880DA /* DashboardViewController.xib */; };
+		673687C42A58806100D880DA /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673687C32A58806100D880DA /* DashboardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		671347DC2A5885B400D8B2FA /* ParentFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentFolderModel.swift; sourceTree = "<group>"; };
 		673687882A56FCB900D880DA /* MangoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MangoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6736878B2A56FCB900D880DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6736878D2A56FCB900D880DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +48,10 @@
 		673687B72A572F3900D880DA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		673687B92A573C2200D880DA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		673687BB2A5740A800D880DA /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		673687BD2A57D9FE00D880DA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		673687BF2A58017500D880DA /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		673687C02A58017500D880DA /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		673687C32A58806100D880DA /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				673687B52A5715C900D880DA /* LoginViewController.swift */,
+				673687BF2A58017500D880DA /* DashboardViewController.swift */,
+				673687C02A58017500D880DA /* DashboardViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -103,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				673687AD2A57074000D880DA /* UserModel.swift */,
+				671347DC2A5885B400D8B2FA /* ParentFolderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -111,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				673687B92A573C2200D880DA /* LoginViewModel.swift */,
+				673687C32A58806100D880DA /* DashboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -137,6 +151,7 @@
 			children = (
 				673687AB2A57063400D880DA /* Dictionary.swift */,
 				673687BB2A5740A800D880DA /* UIViewController.swift */,
+				673687BD2A57D9FE00D880DA /* UITextField.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -218,6 +233,7 @@
 			files = (
 				673687982A56FCBA00D880DA /* LaunchScreen.storyboard in Resources */,
 				673687952A56FCBA00D880DA /* Assets.xcassets in Resources */,
+				673687C22A58017500D880DA /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,12 +247,16 @@
 				673687A72A56FEED00D880DA /* APIPath.swift in Sources */,
 				673687AE2A57074000D880DA /* UserModel.swift in Sources */,
 				673687B82A572F3900D880DA /* Color.swift in Sources */,
+				671347DD2A5885B400D8B2FA /* ParentFolderModel.swift in Sources */,
 				673687B42A57139A00D880DA /* UserPreference.swift in Sources */,
 				6736878C2A56FCB900D880DA /* AppDelegate.swift in Sources */,
 				673687A92A56FEF800D880DA /* NetworkError.swift in Sources */,
 				673687AC2A57063400D880DA /* Dictionary.swift in Sources */,
+				673687C42A58806100D880DA /* DashboardViewModel.swift in Sources */,
+				673687C12A58017500D880DA /* DashboardViewController.swift in Sources */,
 				673687BC2A5740A800D880DA /* UIViewController.swift in Sources */,
 				673687A42A56FEAF00D880DA /* NetworkService.swift in Sources */,
+				673687BE2A57D9FE00D880DA /* UITextField.swift in Sources */,
 				673687BA2A573C2200D880DA /* LoginViewModel.swift in Sources */,
 				6736878E2A56FCB900D880DA /* SceneDelegate.swift in Sources */,
 				673687B12A570C0100D880DA /* Constants.swift in Sources */,

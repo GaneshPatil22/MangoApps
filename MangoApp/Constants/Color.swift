@@ -12,9 +12,9 @@ struct AppColorTheme {
     private init() {}
     static let shared = AppColorTheme()
     
-    let backgroundColor = UIColor.darkGray
-    let titleColor = UIColor.white
-    let borderColor = UIColor.lightGray
-    let placeholderTextColor = UIColor.lightGray
-    let loginBtnTitleCOlor = UIColor.cyan
+    let backgroundColor = UIColor(named: "background")!
+    let titleColor = UIColor(named: "title")!
+    let borderColor = UIColor(named: "border")!
+    let placeholderTextColor = UIColor(named: "placeholder")!
+    let loginBtnTitleCOlor = UIColor(named: "buttonTitle")!
 }

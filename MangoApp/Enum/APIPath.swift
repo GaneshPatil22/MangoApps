@@ -9,6 +9,7 @@ import Foundation
 
 enum APIPath {
     case login
+    case getMainFolder
 
     func getBaseURL() -> String {
         return "https://toke.mangopulse.com"
@@ -18,6 +19,8 @@ enum APIPath {
         switch self {
         case .login:
             return "\(getBaseURL())/api/login.json"
+        case .getMainFolder:
+            return "\(getBaseURL())/api/folders.json"
         }
     }
     

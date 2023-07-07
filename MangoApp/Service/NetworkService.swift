@@ -57,6 +57,11 @@ class NetworkLayer {
                 return
             }
             
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                completion(.failure(.SomethingWentWrong("Something went wrong. Received \(response.statusCode)")))
+                return
+            }
+
             guard let data = data, !data.isEmpty else {
                 completion(.failure(.NoDataReceived("No data received")))
                 return

@@ -10,21 +10,34 @@ import UIKit
 extension UIViewController {
     private var loaderTag: Int { return 919191}
     func showLoader() {
-        let loader = UIActivityIndicatorView(style: .large)
-        loader.backgroundColor = .white
-        loader.tag = loaderTag
-        loader.center = view.center
-        loader.startAnimating()
-        
-        view.isUserInteractionEnabled = false
-        view.addSubview(loader)
+        DispatchQueue.main.async {
+            let loader = UIActivityIndicatorView(style: .large)
+            loader.backgroundColor = .white
+            loader.tag = self.loaderTag
+            loader.center = self.view.center
+            loader.startAnimating()
+            
+            self.view.isUserInteractionEnabled = false
+            self.view.addSubview(loader)
+        }
     }
     
     func hideLoader() {
-        if let loader = view.viewWithTag(loaderTag) as? UIActivityIndicatorView {
-            loader.stopAnimating()
-            loader.removeFromSuperview()
-            view.isUserInteractionEnabled = true
+        DispatchQueue.main.async {
+            if let loader = self.view.viewWithTag(self.loaderTag) as? UIActivityIndicatorView {
+                loader.stopAnimating()
+                loader.removeFromSuperview()
+                self.view.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(action)
+            self.present(alert, animated: true)
         }
     }
 }

@@ -27,15 +27,14 @@ class LoginViewModel {
         return nil
     }
     
-    func loginAPI(completion: @escaping () -> Void?) {
+    func loginAPI(completion: @escaping (UserModel?, NetworkError?) -> Void?) {
         NetworkLayer.shared.makeRequest(api: .login, responseType: UserModel.self, body: loginUserModel?.getLoginRequestBody()) { result in
             switch result {
             case .success(let success):
-                print(success)
+                completion(success, nil)
             case .failure(let failure):
-                print(failure)
+                completion(nil, failure)
             }
-            completion()
         }
     }
     
@@ -59,5 +58,13 @@ struct LoginUserModel {
                         ["api_key": "1a873e8982fdd7835bd00c56d68e33db3f695403",
                          "username": email ?? "",
                          "password": getEncryptedPassword() ?? ""]]]
+    }
+    
+    func getdefectLoginRequestBody() -> [String: Any] {
+        return ["ms_request":
+                    ["user":
+                        ["api_key": "1a873e8982fdd7835bd00c56d68e33db3f695403",
+                         "username": "test@asdsad.com",
+                         "password": "asdsadsadsadasdasdasda"]]]
     }
 }

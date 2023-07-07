@@ -70,10 +70,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        UserPreferences.shared.deleteUser()
         self.view.backgroundColor = AppColorTheme.shared.backgroundColor
-        self.setUpView()
+        self.showVCAccordingToStatus()
     }
-
 }
 
 // MARK: - UI Related code
@@ -148,11 +148,8 @@ extension LoginViewController {
                           NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
         let attributedPlaceholder = NSAttributedString(string: placeHolderText, attributes: attributes)
         
-        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 20))
-        tf.leftView = paddingView
-        tf.rightView = paddingView
-        tf.leftViewMode = .always
-        tf.rightViewMode = .always
+        tf.setPadding(left: 15, right: 15)
+        tf.textColor = AppColorTheme.shared.titleColor
         
         tf.attributedPlaceholder = attributedPlaceholder
     }
@@ -161,6 +158,22 @@ extension LoginViewController {
 
 //MARK: - Logical
 extension LoginViewController {
+    
+    private func showVCAccordingToStatus() {
+        if UserPreferences.shared.isUserLoggedIn() {
+            self.showDashboard()
+        } else {
+            self.setUpView()
+        }
+    }
+    
+    private func showDashboard() {
+        DispatchQueue.main.async {
+            let vc = DashboardViewController()
+            self.navigationController?.setViewControllers([vc], animated: true)
+        }
+    }
+    
     @objc private func loginBtnAction() {
         loginVM.setLoginUserModel(loginUserModel:
                                     LoginUserModel(
@@ -168,15 +181,19 @@ extension LoginViewController {
                                         password: passwordTextField.text,
                                         domainURL: domainTextField.text))
         if let message = loginVM.validate() {
-            print(message)
+            showAlert(title: "ERROR", message: message)
             return
         }
         showLoader()
-        loginVM.loginAPI { [weak self] in
+        loginVM.loginAPI { [weak self] (userModel, err) in
             guard let strongSelf = self else { return }
-            DispatchQueue.main.async {
-                strongSelf.hideLoader()
+            strongSelf.hideLoader()
+            if err != nil {
+                strongSelf.showAlert(title: "ERROR", message: err?.localizedDescription ?? "Something went wrong")
+                return
             }
+            UserPreferences.shared.setUser(userModel)
+            strongSelf.showDashboard()
         }
     }
 }

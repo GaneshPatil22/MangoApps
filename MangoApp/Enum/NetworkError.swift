@@ -14,4 +14,5 @@ enum NetworkError: Error {
     case APIError(String)
     case NoDataReceived(String)
     case DecoderError(String)
+    case SomethingWentWrong(String)
 }
