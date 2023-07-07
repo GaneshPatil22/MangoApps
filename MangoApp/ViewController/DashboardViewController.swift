@@ -32,6 +32,7 @@ extension DashboardViewController {
     
     private func setUpTableView() {
         self.filesFolderTV.register(UITableViewCell.self, forCellReuseIdentifier: "CELL")
+
         self.filesFolderTV.delegate = self
         self.filesFolderTV.dataSource = self
     }
