@@ -48,6 +48,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="border"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGb-KC-3iT">
+                        <rect key="frame" x="0.0" y="67" width="370" height="3"/>
+                        <color key="backgroundColor" name="border"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="3" id="nZc-zC-CLz"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="7bM-E4-Fra" firstAttribute="height" secondItem="KHA-5a-faF" secondAttribute="height" multiplier="0.7" id="1WW-c9-dae"/>
@@ -59,7 +66,10 @@
                     <constraint firstItem="7bM-E4-Fra" firstAttribute="width" secondItem="KHA-5a-faF" secondAttribute="width" multiplier="0.7" id="Fho-mV-30Z"/>
                     <constraint firstItem="7bM-E4-Fra" firstAttribute="leading" secondItem="dET-zc-yUu" secondAttribute="trailing" constant="10" id="Jlt-VX-k72"/>
                     <constraint firstAttribute="trailing" secondItem="7bM-E4-Fra" secondAttribute="trailing" constant="10" id="Lq5-Ak-QUf"/>
+                    <constraint firstItem="gGb-KC-3iT" firstAttribute="bottom" secondItem="KHA-5a-faF" secondAttribute="bottom" constant="20" id="Mir-VT-WAz"/>
                     <constraint firstItem="KHA-5a-faF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="SoC-10-ZDL"/>
+                    <constraint firstItem="gGb-KC-3iT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bbK-oa-e7x"/>
+                    <constraint firstAttribute="trailing" secondItem="gGb-KC-3iT" secondAttribute="trailing" id="eTw-r6-H3n"/>
                     <constraint firstItem="dET-zc-yUu" firstAttribute="top" secondItem="KHA-5a-faF" secondAttribute="top" id="tuW-HN-ZQ4"/>
                     <constraint firstItem="dET-zc-yUu" firstAttribute="height" secondItem="KHA-5a-faF" secondAttribute="height" id="vl5-TB-eNL"/>
                 </constraints>

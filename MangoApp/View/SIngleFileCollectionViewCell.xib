@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SIngleFileCollectionViewCell" id="gTV-IL-0wX" customClass="SIngleFileCollectionViewCell" customModule="MangoApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="304" height="412"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="304" height="412"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17u-Z7-EpL">
+                        <rect key="frame" x="0.0" y="0.0" width="304" height="33"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjT-Za-oks">
+                                <rect key="frame" x="5" y="5" width="294" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="5oJ-wA-TH9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" name="title"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEw-TX-rPU">
+                                <rect key="frame" x="0.0" y="30" width="304" height="3"/>
+                                <color key="backgroundColor" name="border"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="dcT-kt-Nwl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IEw-TX-rPU" firstAttribute="top" secondItem="NjT-Za-oks" secondAttribute="bottom" id="PXm-xa-Jub"/>
+                            <constraint firstAttribute="bottom" secondItem="IEw-TX-rPU" secondAttribute="bottom" id="U0h-66-z3H"/>
+                            <constraint firstAttribute="trailing" secondItem="IEw-TX-rPU" secondAttribute="trailing" id="WIw-U5-ZiZ"/>
+                            <constraint firstItem="NjT-Za-oks" firstAttribute="top" secondItem="17u-Z7-EpL" secondAttribute="top" constant="5" id="g21-HY-ptp"/>
+                            <constraint firstAttribute="trailing" secondItem="NjT-Za-oks" secondAttribute="trailing" constant="5" id="otb-aR-O37"/>
+                            <constraint firstItem="IEw-TX-rPU" firstAttribute="leading" secondItem="17u-Z7-EpL" secondAttribute="leading" id="vFp-VC-IXv"/>
+                            <constraint firstItem="NjT-Za-oks" firstAttribute="leading" secondItem="17u-Z7-EpL" secondAttribute="leading" constant="5" id="xCT-vf-X7N"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbF-qo-VJE" userLabel="MainContaintView">
+                        <rect key="frame" x="30" y="58" width="244" height="294"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ww3-ia-6VV">
+                        <rect key="frame" x="279" y="187.66666666666666" width="20" height="35"/>
+                        <color key="tintColor" name="border"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="arrowtriangle.right.fill" catalog="system"/>
+                        <connections>
+                            <action selector="nextButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="8G9-OA-Z2Y"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="background"/>
+            <constraints>
+                <constraint firstItem="xbF-qo-VJE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="8VO-en-TFD"/>
+                <constraint firstItem="xbF-qo-VJE" firstAttribute="top" secondItem="17u-Z7-EpL" secondAttribute="bottom" constant="25" id="Hib-1e-vB8"/>
+                <constraint firstItem="ww3-ia-6VV" firstAttribute="leading" secondItem="xbF-qo-VJE" secondAttribute="trailing" constant="5" id="JG8-8E-XUg"/>
+                <constraint firstItem="17u-Z7-EpL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="K0n-2r-GBC"/>
+                <constraint firstAttribute="trailing" secondItem="17u-Z7-EpL" secondAttribute="trailing" id="Y7r-Pa-qwF"/>
+                <constraint firstAttribute="trailing" secondItem="xbF-qo-VJE" secondAttribute="trailing" constant="30" id="bhN-X6-4Gt"/>
+                <constraint firstAttribute="bottom" secondItem="xbF-qo-VJE" secondAttribute="bottom" constant="60" id="dbD-Ga-rJK"/>
+                <constraint firstItem="ww3-ia-6VV" firstAttribute="centerY" secondItem="xbF-qo-VJE" secondAttribute="centerY" id="eJ7-PF-pqZ"/>
+                <constraint firstAttribute="trailing" secondItem="ww3-ia-6VV" secondAttribute="trailing" constant="5" id="eY7-tg-xCJ"/>
+                <constraint firstItem="17u-Z7-EpL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lHD-b5-qdQ"/>
+            </constraints>
+            <size key="customSize" width="304" height="412"/>
+            <connections>
+                <outlet property="containerView" destination="17u-Z7-EpL" id="k0c-RY-nGN"/>
+                <outlet property="mainContaintView" destination="xbF-qo-VJE" id="g22-41-3qU"/>
+                <outlet property="titleLabel" destination="NjT-Za-oks" id="GHZ-7P-Cgu"/>
+            </connections>
+            <point key="canvasLocation" x="242.74809160305344" y="34.507042253521128"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>
+        <namedColor name="background">
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="border">
+            <color red="0.35699999332427979" green="0.34900000691413879" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="title">
+            <color red="0.99199998378753662" green="0.98400002717971802" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

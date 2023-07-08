@@ -13,6 +13,7 @@ class DashboardViewModel {
     var parentDir: ShowableFolder?
     var currentSelectedDir: ShowableFolder?
     private var fullPath: String = ""
+    private var collectionViewDataSource: [ShowableFile]?
     
     func getNoOfRows() -> Int {
         return currentSelectedDir?.getCount() ?? 0
@@ -65,6 +66,34 @@ class DashboardViewModel {
         arr.removeLast()
         fullPath = arr.joined(separator: "/")
     }
+    
+    private func getCollectionViewDataSource() -> [ShowableFile]? {
+        var filesArray: [ShowableFile]?
+        for fileAndFolder in (self.currentSelectedDir?.getAllFilesAndFolders() ?? []) {
+            if let file = fileAndFolder as? ShowableFile {
+                if filesArray == nil {
+                    filesArray = [file]
+                } else {
+                    filesArray?.append(file)
+                }
+            }
+        }
+        self.collectionViewDataSource = filesArray
+        return filesArray
+    }
+    
+    func getCollectionViewNoOfRows() -> Int {
+        return self.collectionViewDataSource?.count ?? getCollectionViewDataSource()?.count ?? 0
+    }
+    
+    private func getCollectionViewItemAt(index: Int) -> ShowableFile? {
+        return (self.collectionViewDataSource ?? getCollectionViewDataSource())?[index]
+    }
+    
+    func getCollectionViewItemAtTitle(index: Int) -> String {
+        return (self.collectionViewDataSource ?? getCollectionViewDataSource())?[index].getName() ?? "No NAME"
+    }
+    
 }
 
 //MARK: - API calling
@@ -223,5 +252,9 @@ class ShowableFolder: FileAndFolder {
     
     func getId() -> String {
         return self.id
+    }
+    
+    func getAllFilesAndFolders() -> [FileAndFolder] {
+        return filesAndFolders ?? []
     }
 }

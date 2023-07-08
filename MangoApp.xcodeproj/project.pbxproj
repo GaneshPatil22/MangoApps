@@ -13,6 +13,8 @@
 		671347E42A596B1300D8B2FA /* FileFolderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671347E22A596B1300D8B2FA /* FileFolderTableViewCell.xib */; };
 		671347E72A59B18700D8B2FA /* FirstCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671347E52A59B18700D8B2FA /* FirstCellTableViewCell.swift */; };
 		671347E82A59B18700D8B2FA /* FirstCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671347E62A59B18700D8B2FA /* FirstCellTableViewCell.xib */; };
+		671347EB2A59F9F100D8B2FA /* SIngleFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671347E92A59F9F100D8B2FA /* SIngleFileCollectionViewCell.swift */; };
+		671347EC2A59F9F100D8B2FA /* SIngleFileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671347EA2A59F9F100D8B2FA /* SIngleFileCollectionViewCell.xib */; };
 		6736878C2A56FCB900D880DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736878B2A56FCB900D880DA /* AppDelegate.swift */; };
 		6736878E2A56FCB900D880DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736878D2A56FCB900D880DA /* SceneDelegate.swift */; };
 		673687952A56FCBA00D880DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 673687942A56FCBA00D880DA /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 		671347E22A596B1300D8B2FA /* FileFolderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileFolderTableViewCell.xib; sourceTree = "<group>"; };
 		671347E52A59B18700D8B2FA /* FirstCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCellTableViewCell.swift; sourceTree = "<group>"; };
 		671347E62A59B18700D8B2FA /* FirstCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstCellTableViewCell.xib; sourceTree = "<group>"; };
+		671347E92A59F9F100D8B2FA /* SIngleFileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIngleFileCollectionViewCell.swift; sourceTree = "<group>"; };
+		671347EA2A59F9F100D8B2FA /* SIngleFileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SIngleFileCollectionViewCell.xib; sourceTree = "<group>"; };
 		673687882A56FCB900D880DA /* MangoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MangoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6736878B2A56FCB900D880DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6736878D2A56FCB900D880DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 				671347E22A596B1300D8B2FA /* FileFolderTableViewCell.xib */,
 				671347E52A59B18700D8B2FA /* FirstCellTableViewCell.swift */,
 				671347E62A59B18700D8B2FA /* FirstCellTableViewCell.xib */,
+				671347E92A59F9F100D8B2FA /* SIngleFileCollectionViewCell.swift */,
+				671347EA2A59F9F100D8B2FA /* SIngleFileCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				671347EC2A59F9F100D8B2FA /* SIngleFileCollectionViewCell.xib in Resources */,
 				673687982A56FCBA00D880DA /* LaunchScreen.storyboard in Resources */,
 				673687952A56FCBA00D880DA /* Assets.xcassets in Resources */,
 				673687C22A58017500D880DA /* DashboardViewController.xib in Resources */,
@@ -270,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				673687A72A56FEED00D880DA /* APIPath.swift in Sources */,
+				671347EB2A59F9F100D8B2FA /* SIngleFileCollectionViewCell.swift in Sources */,
 				673687AE2A57074000D880DA /* UserModel.swift in Sources */,
 				671347E32A596B1300D8B2FA /* FileFolderTableViewCell.swift in Sources */,
 				673687B82A572F3900D880DA /* Color.swift in Sources */,

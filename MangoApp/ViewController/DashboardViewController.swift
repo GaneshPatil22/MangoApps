@@ -11,7 +11,7 @@ class DashboardViewController: UIViewController {
 
     @IBOutlet weak var filesFolderTV: UITableView!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var singleFileCollectionView: UICollectionView!
 
     private let dashboardVM = DashboardViewModel()
 
@@ -23,6 +23,7 @@ class DashboardViewController: UIViewController {
         self.setUpTableView()
         self.setUpNavigationItem()
         self.fetchParentDir()
+        self.setUpCollectionView()
         
     }
 }
@@ -61,9 +62,22 @@ extension DashboardViewController {
         self.filesFolderTV.dataSource = self
     }
     
+    private func setUpCollectionView() {
+        self.singleFileCollectionView.delegate = self
+        self.singleFileCollectionView.dataSource = self
+        
+        self.singleFileCollectionView.register(UINib(nibName: SIngleFileCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: SIngleFileCollectionViewCell.identifier)
+    }
+    
     private func reloadTableView() {
         DispatchQueue.main.async {
             self.filesFolderTV.reloadData()
+        }
+    }
+    
+    private func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.singleFileCollectionView.reloadData()
         }
     }
     
@@ -125,21 +139,31 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, U
                 strongSelf.reloadTableView()
             }
         } else if let file = folder as? ShowableFile {
-            self.dashboardVM.downloadFile(file: file) { [weak self] (url, err) in
-                guard let strongSelf = self else { return }
-                strongSelf.hideLoader()
-                if let err {
-                    strongSelf.showErrorAlert(error: err)
-                    return
-                }
-                strongSelf.presentFile(at: url!)
-                
-            }
+            
+//            self.dashboardVM.downloadFile(file: file) { [weak self] (url, err) in
+//                guard let strongSelf = self else { return }
+//                strongSelf.hideLoader()
+//                if let err {
+//                    strongSelf.showErrorAlert(error: err)
+//                    return
+//                }
+//                strongSelf.presentFile(at: url!)
+//
+//            }
+            
+            self.hideLoader()
+            self.showCollectionView()
         } else {
             self.hideLoader()
         }
     }
 
+    private func showCollectionView() {
+        self.singleFileCollectionView.isHidden = false
+        self.filesFolderTV.isHidden = true
+        self.reloadCollectionView()
+    }
+    
     func presentFile(at url: URL) {
         DispatchQueue.main.async {
             self.documentInteractionController = UIDocumentInteractionController(url: url)
@@ -152,6 +176,35 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, U
     
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         return self.navigationController ?? self
+    }
+}
+
+extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.dashboardVM.getCollectionViewNoOfRows()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SIngleFileCollectionViewCell.identifier, for: indexPath) as? SIngleFileCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let title = self.dashboardVM.getCollectionViewItemAtTitle(index: indexPath.row)
+        cell.dismissCV = dismissCV
+        cell.setupView(title: title)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    private func dismissCV() {
+        self.singleFileCollectionView.isHidden = true
+        self.filesFolderTV.isHidden = false
     }
 }
 
