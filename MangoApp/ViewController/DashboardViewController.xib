@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="containerView" destination="7ie-c6-vcX" id="bxO-9h-sl9"/>
                 <outlet property="filesFolderTV" destination="BAS-dy-wdQ" id="hny-C4-PZm"/>
+                <outlet property="progressBar" destination="ITA-iL-7eP" id="xEv-kP-6Bf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,6 +41,12 @@
                             <rect key="frame" x="0.0" y="31.666666666666686" width="393" height="727.33333333333326"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
+                        <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ITA-iL-7eP">
+                            <rect key="frame" x="10" y="393.33333333333331" width="373" height="4"/>
+                            <color key="tintColor" name="title"/>
+                            <color key="progressTintColor" name="title"/>
+                            <color key="trackTintColor" name="placeholder"/>
+                        </progressView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -47,10 +54,14 @@
                         <constraint firstItem="GYm-Zz-OSK" firstAttribute="leading" secondItem="7ie-c6-vcX" secondAttribute="leading" id="GDP-Yq-cLS"/>
                         <constraint firstAttribute="trailing" secondItem="BAS-dy-wdQ" secondAttribute="trailing" id="XLs-xS-0CB"/>
                         <constraint firstItem="GYm-Zz-OSK" firstAttribute="top" secondItem="ZZe-5b-s3b" secondAttribute="bottom" id="ZE2-ev-dha"/>
+                        <constraint firstAttribute="trailing" secondItem="ITA-iL-7eP" secondAttribute="trailing" constant="10" id="ZO8-lN-pIL"/>
+                        <constraint firstItem="ITA-iL-7eP" firstAttribute="centerX" secondItem="BAS-dy-wdQ" secondAttribute="centerX" id="aaU-im-aZa"/>
+                        <constraint firstItem="ITA-iL-7eP" firstAttribute="leading" secondItem="7ie-c6-vcX" secondAttribute="leading" constant="10" id="alC-B1-Neq"/>
                         <constraint firstItem="BAS-dy-wdQ" firstAttribute="top" secondItem="GYm-Zz-OSK" secondAttribute="bottom" id="iZu-0G-UR5"/>
                         <constraint firstItem="ZZe-5b-s3b" firstAttribute="top" secondItem="7ie-c6-vcX" secondAttribute="top" id="jDX-Cd-7Gx"/>
                         <constraint firstItem="BAS-dy-wdQ" firstAttribute="leading" secondItem="7ie-c6-vcX" secondAttribute="leading" id="oet-61-vfa"/>
                         <constraint firstAttribute="bottom" secondItem="BAS-dy-wdQ" secondAttribute="bottom" id="sYX-vk-DJW"/>
+                        <constraint firstItem="ITA-iL-7eP" firstAttribute="centerY" secondItem="BAS-dy-wdQ" secondAttribute="centerY" id="sjp-N2-yfi"/>
                         <constraint firstAttribute="trailing" secondItem="ZZe-5b-s3b" secondAttribute="trailing" id="slT-wp-uQN"/>
                         <constraint firstItem="ZZe-5b-s3b" firstAttribute="leading" secondItem="7ie-c6-vcX" secondAttribute="leading" id="w4P-qk-sjf"/>
                     </constraints>
@@ -69,13 +80,16 @@
     </objects>
     <resources>
         <namedColor name="background">
-            <color red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.13300000131130219" green="0.13300000131130219" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="border">
-            <color red="0.35686278339999999" green="0.34901961679999999" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.35699999332427979" green="0.34900000691413879" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="placeholder">
-            <color red="0.45490196350000001" green="0.47058826679999999" blue="0.45098042490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.45500001311302185" green="0.47099998593330383" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="title">
+            <color red="0.99199998378753662" green="0.98400002717971802" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

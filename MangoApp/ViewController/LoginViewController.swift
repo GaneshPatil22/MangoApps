@@ -188,8 +188,8 @@ extension LoginViewController {
         loginVM.loginAPI { [weak self] (userModel, err) in
             guard let strongSelf = self else { return }
             strongSelf.hideLoader()
-            if err != nil {
-                strongSelf.showAlert(title: "ERROR", message: err?.localizedDescription ?? "Something went wrong")
+            if let err {
+                strongSelf.showErrorAlert(error: err)
                 return
             }
             UserPreferences.shared.setUser(userModel)

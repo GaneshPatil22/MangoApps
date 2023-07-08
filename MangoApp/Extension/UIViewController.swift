@@ -40,4 +40,34 @@ extension UIViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    func showErrorAlert(error: NetworkError) {
+        DispatchQueue.main.async {
+            let title = "Error"
+            var message = "Something went worng \(error.localizedDescription)"
+            switch error {
+            case .InvalidURL(let string):
+                message = string
+            case .APIError(let string):
+                message = string
+            case .NoDataReceived(let string):
+                message = string
+            case .DecoderError(let string):
+                message = string
+            case .SomethingWentWrong(let string):
+                message = string
+            case .NotFound(let string):
+                message = string
+            case .Unauthorized(let string):
+                message = string
+            case .ServerCrashed(let string):
+                message = string
+            }
+
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(action)
+            self.present(alert, animated: true)
+        }
+    }
 }

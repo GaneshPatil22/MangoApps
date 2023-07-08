@@ -9,9 +9,12 @@ import Foundation
 
 enum APIPath {
     case login
+    case logout
     case getMainFolder
+    case getFolderContent(String)
+    case URL(String)
 
-    func getBaseURL() -> String {
+    private func getBaseURL() -> String {
         return "https://toke.mangopulse.com"
     }
 
@@ -19,14 +22,20 @@ enum APIPath {
         switch self {
         case .login:
             return "\(getBaseURL())/api/login.json"
+        case .logout:
+            return "\(getBaseURL())/api/logout.json"
         case .getMainFolder:
             return "\(getBaseURL())/api/folders.json"
+        case .getFolderContent(let id):
+            return "\(getBaseURL())/api/folders/\(id)/files.json"
+        case .URL(let string):
+            return string
         }
     }
     
     func getRequetType() ->String {
         switch self {
-        case .login:
+        case .login, .logout:
             return "POST"
         default:
             return "GET"
