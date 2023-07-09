@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     let userEmailTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.text = "iosuser@toke.com"
+//        tf.text = "iosuser@toke.com"
         return tf
     }()
     
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.isSecureTextEntry = true
-        tf.text = "temp123"
+//        tf.text = "temp123"
         return tf
     }()
     
@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
     let domainTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.text = "toke.mangopulse.com"
+        tf.text = BaseURL.baseURL
         return tf
     }()
     
@@ -184,6 +184,10 @@ extension LoginViewController {
             showAlert(title: "ERROR", message: message)
             return
         }
+        if let domain = domainTextField.text {
+            BaseURL.baseURL = domain
+        }
+        
         showLoader()
         loginVM.loginAPI { [weak self] (userModel, err) in
             guard let strongSelf = self else { return }

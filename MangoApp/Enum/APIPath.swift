@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct BaseURL {
+    static var baseURL = "https://toke.mangopulse.com"
+}
+
 enum APIPath {
     case login
     case logout
@@ -15,7 +19,7 @@ enum APIPath {
     case URL(String)
 
     private func getBaseURL() -> String {
-        return "https://toke.mangopulse.com"
+        return BaseURL.baseURL
     }
 
     func getAPIPath() -> String {

@@ -16,6 +16,7 @@ class DashboardViewController: UIViewController {
     private let dashboardVM = DashboardViewModel()
 
     var documentInteractionController: UIDocumentInteractionController?
+    var showInPreview: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,6 @@ class DashboardViewController: UIViewController {
         self.setUpNavigationItem()
         self.fetchParentDir()
         self.setUpCollectionView()
-        
     }
 }
 
@@ -75,9 +75,10 @@ extension DashboardViewController {
         }
     }
     
-    private func reloadCollectionView() {
+    private func reloadCollectionView(with index: Int = 0) {
         DispatchQueue.main.async {
             self.singleFileCollectionView.reloadData()
+            self.singleFileCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .bottom, animated: true)
         }
     }
     
@@ -139,29 +140,22 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, U
                 strongSelf.reloadTableView()
             }
         } else if let file = folder as? ShowableFile {
-            
-//            self.dashboardVM.downloadFile(file: file) { [weak self] (url, err) in
-//                guard let strongSelf = self else { return }
-//                strongSelf.hideLoader()
-//                if let err {
-//                    strongSelf.showErrorAlert(error: err)
-//                    return
-//                }
-//                strongSelf.presentFile(at: url!)
-//
-//            }
-            
-            self.hideLoader()
-            self.showCollectionView()
+            self.downloadFile(file: file)
         } else {
             self.hideLoader()
         }
     }
 
-    private func showCollectionView() {
-        self.singleFileCollectionView.isHidden = false
-        self.filesFolderTV.isHidden = true
-        self.reloadCollectionView()
+    private func showCollectionView(with index: Int = 0, onlyRelaodCell: Bool) {
+        DispatchQueue.main.async {
+            self.singleFileCollectionView.isHidden = false
+            self.filesFolderTV.isHidden = true
+            if onlyRelaodCell {
+                self.singleFileCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+                return
+            }
+            self.reloadCollectionView(with: index)
+        }
     }
     
     func presentFile(at url: URL) {
@@ -183,25 +177,58 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.dashboardVM.getCollectionViewNoOfRows()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SIngleFileCollectionViewCell.identifier, for: indexPath) as? SIngleFileCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let title = self.dashboardVM.getCollectionViewItemAtTitle(index: indexPath.row)
+        let file = self.dashboardVM.getCollectionViewItemAt(index: indexPath.row)
         cell.dismissCV = dismissCV
-        cell.setupView(title: title)
+        cell.showErrorTost = self.showErrorAlert
+        cell.setupView(file: file)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let iPath = self.singleFileCollectionView.indexPathsForVisibleItems.first {
+            print(iPath)
+            guard let file = self.dashboardVM.getCollectionViewItemAt(index: iPath.row) else { return }
+            self.showLoader()
+            self.downloadFile(file: file, onlyReloadCell: true)
+        }
+    }
     
+    func downloadFile(file: ShowableFile, onlyReloadCell: Bool = false) {
+        print("Starting dowload file: \(file.getName())")
+        self.dashboardVM.downloadFile(file: file, showInPreview: self.showInPreview) { [weak self] (url, err) in
+            guard let strongSelf = self else { return }
+            strongSelf.hideLoader()
+            if let err {
+                strongSelf.showErrorAlert(error: err)
+                return
+            }
+            file.setDownloadedFilePathURL(downloadedURL: url)
+            if strongSelf.showInPreview {
+                strongSelf.presentFile(at: url!)
+            } else {
+                let newIndex = strongSelf.dashboardVM.getCollectionViewDatasourceIndex(for: file)
+                strongSelf.showCollectionView(with: newIndex, onlyRelaodCell: onlyReloadCell)
+            }
+        }
+        
+//        let newIndex = self.dashboardVM.getCollectionViewDatasourceIndex(for: file)
+//        self.showCollectionView(with: newIndex, onlyRelaodCell: onlyReloadCell)
+//        self.hideLoader()
+    }
+
     private func dismissCV() {
         self.singleFileCollectionView.isHidden = true
         self.filesFolderTV.isHidden = false

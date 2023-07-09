@@ -86,12 +86,24 @@ class DashboardViewModel {
         return self.collectionViewDataSource?.count ?? getCollectionViewDataSource()?.count ?? 0
     }
     
-    private func getCollectionViewItemAt(index: Int) -> ShowableFile? {
+    func getCollectionViewItemAt(index: Int) -> ShowableFile? {
         return (self.collectionViewDataSource ?? getCollectionViewDataSource())?[index]
     }
     
     func getCollectionViewItemAtTitle(index: Int) -> String {
         return (self.collectionViewDataSource ?? getCollectionViewDataSource())?[index].getName() ?? "No NAME"
+    }
+    
+    func getCollectionViewDatasourceIndex(for file: ShowableFile) -> Int {
+        var index = 0
+        for tempFile in (getCollectionViewDataSource() ?? [])
+        {
+            if file === tempFile {
+                return index
+            }
+            index += 1
+        }
+        return 0
     }
     
 }
@@ -147,14 +159,19 @@ extension DashboardViewModel {
         }
     }
     
-    func downloadFile(file: ShowableFile, comletion: @escaping (URL?, NetworkError?) -> Void) {
+    func downloadFile(file: ShowableFile, showInPreview: Bool, comletion: @escaping (URL?, NetworkError?) -> Void) {
         guard let stringUrl = file.getShortURL() else {
             comletion(nil, .SomethingWentWrong("Downloadedable URL is not valid"))
             return
         }
         
-        guard let extention = file.getName().components(separatedBy: ".").last else {
+        guard let extention = file.getExtention() else {
             comletion(nil, .SomethingWentWrong("Not able to fetch file extenstion"))
+            return
+        }
+        
+        if !showInPreview, !SupportedType.isSupportedType(type: extention) {
+            comletion(nil, .SomethingWentWrong("File type \(extention) not supported in this view.."))
             return
         }
         
@@ -182,6 +199,7 @@ class ShowableFile: FileAndFolder, Downloadable {
     private let id: String
     private let shortUrl: String?
     private let size: Int?
+    private var downloadedURL: URL?
     
     init(parentFolder: ShowableFolder, name: String, id: String, shortUrl: String?, size: Int?) {
         self.parentFolder = parentFolder
@@ -215,6 +233,18 @@ class ShowableFile: FileAndFolder, Downloadable {
         formatter.zeroPadsFractionDigits = true
         
         return formatter.string(fromByteCount: Int64(size))
+    }
+    
+    func getDownloadedFilePathURL() -> URL? {
+        return self.downloadedURL
+    }
+    
+    func setDownloadedFilePathURL(downloadedURL: URL?) {
+        self.downloadedURL = downloadedURL
+    }
+    
+    func getExtention() -> String? {
+        return self.getName().components(separatedBy: ".").last
     }
 }
 
@@ -256,5 +286,14 @@ class ShowableFolder: FileAndFolder {
     
     func getAllFilesAndFolders() -> [FileAndFolder] {
         return filesAndFolders ?? []
+    }
+}
+
+enum SupportedType: String {
+    case pdf
+    case png, jpg, jpeg
+    
+    static func isSupportedType(type: String) -> Bool {
+        return SupportedType(rawValue: type) != nil
     }
 }
